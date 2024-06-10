@@ -34,7 +34,7 @@
             text-align: left;
             margin-bottom: 5px;
         }
-        .container input[type="text"] {
+        .container select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -80,7 +80,7 @@
                 var upiLink = "upi://pay?pa=6002322737@omni&pn=RecipientName&am=" + amount;
                 window.location.href = upiLink;
             } else {
-                alert("Please enter the amount.");
+                alert("Please select an amount.");
             }
         }
     </script>
@@ -91,8 +91,13 @@
         <h2>Pay Now</h2>
         <form onsubmit="event.preventDefault();">
             <input type="hidden" name="recipient" value="6002322737@omni">
-            <label for="amount">Amount:</label>
-            <input type="text" name="amount" id="amount" required>
+            <label for="amount">Select Amount:</label>
+            <select id="amount" required>
+                <option value="" disabled selected>Select amount</option>
+                <option value="100">100</option>
+                <option value="299">299</option>
+                <option value="499">499</option>
+            </select>
             <input type="submit" value="Show QR" class="qr-button" onclick="showQRCode()">
             <input type="submit" value="Pay with UPI App" class="upi-button" onclick="redirectToUPIApp()">
         </form>
